@@ -1,0 +1,19 @@
+import numpy as np
+
+# Get user input for N
+user_input = int(input("Enter the value of N: "))
+
+# Initialize an empty array
+array = np.zeros((user_input, user_input), dtype=int)
+
+num = 1  # Starting number
+
+for i in range(user_input):  # Loop through each row
+    start = num + (i * (i + 1)) // 2  # Calculate the start value for each row correctly
+    for j in range(i + 1):  # Only fill up to the required columns
+        array[i, j] = start - j  # Store numbers in descending order
+    num += i + 1  # Update 'num' for the next row
+
+# Print the output in the required format
+for i in range(user_input):
+    print(" ".join(str(array[i, j]) for j in range(i + 1)))
